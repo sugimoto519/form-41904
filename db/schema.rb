@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_05_31_140134) do
+ActiveRecord::Schema[7.1].define(version: 2025_06_01_090000) do
   create_table "active_admin_comments", charset: "utf8mb3", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
@@ -38,12 +38,15 @@ ActiveRecord::Schema[7.1].define(version: 2025_05_31_140134) do
   end
 
   create_table "schedules", charset: "utf8mb3", force: :cascade do |t|
-    t.date "date", null: false
-    t.time "time", null: false
+    t.datetime "start_time", null: false
+    t.datetime "end_time", null: false
     t.string "place", null: false
     t.text "content", null: false
+    t.bigint "admin_user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["admin_user_id"], name: "index_schedules_on_admin_user_id"
   end
 
+  add_foreign_key "schedules", "admin_users"
 end
