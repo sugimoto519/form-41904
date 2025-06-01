@@ -26,11 +26,8 @@ ActiveRecord::Schema[7.1].define(version: 2025_05_31_140134) do
   end
 
   create_table "admin_users", charset: "utf8mb3", force: :cascade do |t|
-    t.string "name", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.string "role", null: false
-    t.integer "district_id", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
